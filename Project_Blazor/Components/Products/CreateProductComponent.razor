@@ -1,0 +1,40 @@
+﻿@using Entities
+@using Business
+
+<div>
+
+	<EditForm Model = "oProduct">
+		<div class="form-group">
+			<label>Id Producto</label>
+			<InputNumber @bind-Value="oProduct.ProductId" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label>Producto</label>
+			<InputText @bind-Value="oProduct.ProductName" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label>Precio</label>
+			<InputNumber @bind-Value="oProduct.ProductPrice" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label>Categoría</label>
+			<InputText @bind-Value="oProduct.ProductCategory" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label>Stock</label>
+			<InputNumber @bind-Value="oProduct.ProductStock" class="form-control"/>
+		</div>
+
+		<input type="button" value="Agregar Producto" @onclick="SaveProduct"/>
+
+	</EditForm>
+</div>
+
+@code {
+	Products oProduct = new Products();
+
+	private void SaveProduct()
+	{
+		B_Product.CreateProduct(oProduct);
+	}
+}

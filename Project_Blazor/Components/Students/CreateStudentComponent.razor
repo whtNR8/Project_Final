@@ -1,0 +1,38 @@
+﻿@using Entities
+@using Business
+
+<div>
+
+	<EditForm Model = "oStudent">
+		<div class="form-group">
+			<label>Id Estudiante</label>
+			<InputNumber @bind-Value="oStudent.StudentId" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label>Estudiante</label>
+			<InputText @bind-Value="oStudent.StudentName" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label>Edad</label>
+			<InputNumber @bind-Value="oStudent.StudentAge" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label>Carrera</label>
+			<InputText @bind-Value="oStudent.StudentCareer" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label>Seemestre</label>
+			<InputNumber @bind-Value="oStudent.StudentSemester" class="form-control"/>
+		</div>
+
+		<input type="button" value="Agregar Estudiante" @onclick="SaveStudent" />
+	</EditForm>
+</div>
+@code {
+	Students oStudent = new Students();
+
+	private void SaveStudent()
+	{
+		B_Student.CreateStudent(oStudent);
+	}
+}
